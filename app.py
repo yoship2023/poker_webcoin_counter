@@ -18,7 +18,7 @@ def calculate_entries_for_rtp(entry_fee, rtp_target, total_prize):
 
     return int(d_prize_pool)
 
-st.title("ウェブコインかぞえチャオ")
+st.title("ウェブコインかぞえチャオⅡ")
 
 TAN03 = 0.03
 # 取引手数料（7%）
