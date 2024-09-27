@@ -46,7 +46,7 @@ else :
 
     if st.button("計算"):
         st.info(f"GGドル交換コインは  {int(gg_doll_coin):,} コイン")
-        st.info(f"着金コインは  {int(arrival_coin):,} コイン")
+        st.success(f"着金コインは  {int(arrival_coin):,} コイン")
         # st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
         # st.success(f"1ドルのレート（円） {exchange_rate:,} ")
 
