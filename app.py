@@ -37,16 +37,17 @@ if currency == "ポーカーウェブコイン":
         st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
 
 else :
-    arrival_coin = st.number_input("GGドル", min_value=1, value=10000, step=100)
+    gg_doll = st.number_input("GGドル", min_value=1, value=10000, step=100)
 
     # GGドル交換コイン
-    gg_doll_coin = arrival_coin * exchange_rate
-
+    gg_doll_coin = gg_doll * exchange_rate
+    # 着金コイン
+    arrival_coin = gg_doll_coin * 1.07526882
 
     if st.button("計算"):
         st.info(f"GGドル交換コインは  {gg_doll_coin:,} コイン")
-        st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
-        st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
+        st.info(f"着金コインは  {arrival_coin:,} コイン")
+        # st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
         # st.success(f"1ドルのレート（円） {exchange_rate:,} ")
 
 
