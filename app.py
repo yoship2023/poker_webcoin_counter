@@ -12,7 +12,6 @@ TAN03 = 0.03
 # 取引手数料（7%）
 TAN07 = 0.07
 TAN93 = 1 - TAN07
-TAN13 = 1.3
 
 # def get_currency_rate(currency: str) :
 #     """
