@@ -1,23 +1,56 @@
 import streamlit as st
+import yfinance as yf
+import pandas_datareader.data as pdr
 
 from decimal import *
+from datetime import datetime, timedelta
 
-# st.title("ウェブコインかぞえチャオ")
-# st.header("ウェブコインかぞえチャオ")
-st.subheader("ウェブコインかぞえチャオⅡ")
-st.text("最新のドル円レートと起点通過を選択してください")
-
+# ドル円レート
+RATE = 143
 # トランスファー手数料（3%）
 TAN03 = 0.03
 # 取引手数料（7%）
 TAN07 = 0.07
 TAN93 = 1 - TAN07
 TAN13 = 1.3
-# ドル円レート
-RATE = 143.00
+
+def get_currency_rate(currency: str) :
+    """
+    引数で指定した為替の前日終値をyahooファイナンスより取得する関数。
+    """
+    try:
+        yesterday_day = datetime.today() - timedelta(days=1)
+        start = yesterday_day
+        end = yesterday_day
+        ticker = currency
+        yf.pdr_override()
+
+        res1 = pdr.get_data_yahoo(ticker, start, end)
+
+    except Exception as e:
+        #print(e)
+        print(f"Could not currency rate 1 {currency}")
+
+    if len(res1) == 0:
+        print(f"Could not currency rate 2 {currency}")
+        if currency == 'USDJPY=X':
+            ret_ = RATE
+        else:
+            ret_ = 1.0
+
+        return ret_
+    else:
+        return round(res1.iloc[0, 4], 2)
+
+# st.title("ウェブコインかぞえチャオ")
+# st.header("ウェブコインかぞえチャオ")
+st.subheader("ウェブコインかぞえチャオⅡ")
+st.text("最新のドル円レートと起点通過を選択してください")
+
+CURRENCY_USD_JPY = get_currency_rate('USDJPY=X')
 
 # 入力フォーム
-exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=RATE)
+exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=CURRENCY_USD_JPY)
 
 # 起点通貨の選択（ラジオボタン）
 currency = st.radio("起点通貨を選択", ("ポーカーウェブコイン", "GGドル"))
