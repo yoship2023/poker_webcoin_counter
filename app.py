@@ -8,7 +8,7 @@ st.subheader("ウェブコインかぞえチャオⅡ")
 st.text("最新のドル円レートと起点通過を選択してください")
 
 # ドル円レート
-RATE = 143
+RATE = 143.00
 # トランスファー手数料（3%）
 # TAN03 = 0.03
 # 取引手数料（7%）
@@ -16,7 +16,7 @@ TAN07 = 0.07
 TAN93 = 1 - TAN07
 
 # 入力フォーム
-# exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=RATE)
+exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=RATE)
 
 # 起点通貨の選択（ラジオボタン）
 # currency = st.radio("起点通貨を選択", ("ポーカーウェブコイン", "GGドル"))
