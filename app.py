@@ -37,7 +37,7 @@ if currency == "ポーカーウェブコイン":
         st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
 
 else :
-    gg_doll = st.number_input("GGドル", min_value=1, value=10000, step=100)
+    gg_doll = st.number_input("GGドル", min_value=1, value=100, step=1)
 
     # GGドル交換コイン
     gg_doll_coin = gg_doll * exchange_rate
