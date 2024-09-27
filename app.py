@@ -19,7 +19,6 @@ st.text("最新のドル円レートと起点通過を選択してください")
 
 # 入力フォーム
 exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=RATE)
-# exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=CURRENCY_USD_JPY)
 
 # 起点通貨の選択（ラジオボタン）
 currency = st.radio("起点通貨を選択", ("ポーカーウェブコイン", "GGドル"))
