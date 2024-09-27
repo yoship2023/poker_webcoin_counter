@@ -1,22 +1,6 @@
 import streamlit as st
-import pandas as pd
 
 from decimal import *
-
-def calculate_rtp(prize_pool, total_entry_fee):
-    if total_entry_fee == 0:
-        return 0
-    return (prize_pool / total_entry_fee) * 100
-
-def calculate_entries_for_rtp(entry_fee, rtp_target, total_prize):
-    if rtp_target == 0:
-        return 0
-    prize_pool = total_prize / (rtp_target / 100 * entry_fee)
-    # 小数第1位で四捨五入
-    d_prize_pool = Decimal(str(prize_pool)) # 必ず文字列で渡す
-    d_prize_pool = d_prize_pool.quantize(Decimal("1"), rounding=ROUND_HALF_UP)
-
-    return int(d_prize_pool)
 
 # st.title("ウェブコインかぞえチャオ")
 # st.header("ウェブコインかぞえチャオ")
@@ -46,7 +30,14 @@ if currency == "ポーカーウェブコイン":
     ta_tran = int(arrival_coin * TAN07)
     # GGドル
     gg_doll = gg_tran_coin / exchange_rate
-    # result_gg_doll =
+
+    if st.button("計算"):
+        st.info(f"GGドル交換は  {gg_tran_coin:,} 円")
+        st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
+        st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
+
+else :
+    arrival_coin = st.number_input("GGドル", min_value=1, value=10000, step=100)
 
     if st.button("計算"):
         st.info(f"GGドル交換は  {gg_tran_coin:,} 円")
@@ -54,8 +45,6 @@ if currency == "ポーカーウェブコイン":
         st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
         # st.success(f"1ドルのレート（円） {exchange_rate:,} ")
 
-else :
-    arrival_coin = st.number_input("GGドル", min_value=1, value=10000, step=100)
 
 # if st.button("還元率を計算"):
 #     rtp = calculate_rtp(prize_pool, total_entry_fee)
