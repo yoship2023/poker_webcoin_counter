@@ -50,26 +50,6 @@ else :
         st.info(f"GGドル交換コインは  {int(gg_doll_coin):,} コイン")
         st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
         st.success(f"着金コインは  {int(arrival_coin):,} コイン")
-        # st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
-        # st.success(f"1ドルのレート（円） {exchange_rate:,} ")
-
-
-# if st.button("還元率を計算"):
-#     rtp = calculate_rtp(prize_pool, total_entry_fee)
-#     st.success(f"賞金総額は {prize_pool:,} 円、エントリー費用の合計は {total_entry_fee:,} 円、還元率は {rtp:.2f} % です！")
-
-#     # 還元率ごとのエントリー数計算
-#     rtp_targets = [100, 90, 80, 70]
-#     entries_needed = [calculate_entries_for_rtp(entry_fee, rtp_target, prize_pool) for rtp_target in rtp_targets]
-
-#     # 結果を表形式で表示
-#     rtp_df = pd.DataFrame({
-#         "還元率 (%)": rtp_targets,
-#         "必要エントリー数": entries_needed
-#     })
-
-#     st.subheader("還元率ごとの必要エントリー数")
-#     st.table(rtp_df)
 
 # 画面の下部にTwitterリンクを追加
 st.markdown(
