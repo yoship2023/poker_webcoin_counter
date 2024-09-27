@@ -18,28 +18,35 @@ def calculate_entries_for_rtp(entry_fee, rtp_target, total_prize):
 
     return int(d_prize_pool)
 
-st.title("ウェブコインかぞえチャオⅡ")
+# st.title("ウェブコインかぞえチャオ")
+# st.header("ウェブコインかぞえチャオ")
+st.subheader("ウェブコインかぞえチャオⅡ")
+st.text("最新のドル円レートと着金コインを入力してください")
 
+# トランスファー手数料（3%）
 TAN03 = 0.03
 # 取引手数料（7%）
 TAN07 = 0.07
 TAN93 = 1 - TAN07
 TAN13 = 1.3
+# ドル円レート
+RATE = 143.00
 
 # 入力フォーム
-exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=144.5)
-arrival_coin = st.number_input("着金コイン", min_value=1, value=1, step=1)
+exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=RATE)
+arrival_coin = st.number_input("着金コイン", min_value=1, value=10000, step=1)
 # GGドル交換
 gg_tran_coin = int(arrival_coin * TAN93)
 # 取引手数料（7%）
 ta_tran = int(arrival_coin * TAN07)
 # GGドル
-gg_doll = int(gg_tran_coin / exchange_rate)
+gg_doll = gg_tran_coin / exchange_rate
+# result_gg_doll =
 
 if st.button("計算"):
-    st.success(f"GGドル交換は  {gg_tran_coin:,} 円")
-    st.success(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
-    st.success(f"GGドル {gg_doll:,} ")
+    st.info(f"GGドル交換は  {gg_tran_coin:,} 円")
+    st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
+    st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
     # st.success(f"1ドルのレート（円） {exchange_rate:,} ")
 
 # if st.button("還元率を計算"):
