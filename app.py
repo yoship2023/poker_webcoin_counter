@@ -42,7 +42,7 @@ else :
     # GGドル交換コイン
     gg_doll_coin = gg_doll * exchange_rate
     # 着金コイン
-    arrival_coin = gg_doll_coin * 1.07526882
+    arrival_coin = gg_doll_coin / TAN93
     # 取引手数料（7%）
     ta_tran = int(arrival_coin * TAN07)
 
