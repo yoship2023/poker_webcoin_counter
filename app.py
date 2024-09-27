@@ -2,6 +2,11 @@ import streamlit as st
 
 from decimal import *
 
+# st.title("ウェブコインかぞえチャオ")
+# st.header("ウェブコインかぞえチャオ")
+st.subheader("ウェブコインかぞえチャオⅡ")
+st.text("最新のドル円レートと起点通過を選択してください")
+
 # ドル円レート
 RATE = 143
 # トランスファー手数料（3%）
@@ -9,12 +14,6 @@ TAN03 = 0.03
 # 取引手数料（7%）
 TAN07 = 0.07
 TAN93 = 1 - TAN07
-
-# st.title("ウェブコインかぞえチャオ")
-# st.header("ウェブコインかぞえチャオ")
-st.subheader("ウェブコインかぞえチャオⅡ")
-st.text("最新のドル円レートと起点通過を選択してください")
-
 # CURRENCY_USD_JPY = get_currency_rate('USDJPY=X')
 
 # 入力フォーム
