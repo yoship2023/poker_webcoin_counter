@@ -1,6 +1,6 @@
 import streamlit as st
-# import yfinance as yf
-import pandas_datareader.data as pdr
+import yfinance as yf
+# import pandas_datareader.data as pdr
 
 from decimal import *
 from datetime import datetime, timedelta
