@@ -53,7 +53,7 @@ else :
     have_coin = st.number_input("保有コイン", min_value=1, value=10000, step=100)
 
     # 着金コイン
-    arrival_coin = have_coin / 1.03
+    arrival_coin = have_coin / (1 + TAN03)
     # トランスファー手数料（3%）
     tran_ta = arrival_coin * TAN03
     # GGドル交換
@@ -64,8 +64,8 @@ else :
     gg_doll = gg_tran_coin / exchange_rate
 
     if st.button("計算"):
-        st.success(f"着金コインは  {arrival_coin:,} coin")
-        st.info(f"トランスファー手数料（3%）は  {tran_ta:,} coin")
+        st.success(f"着金コインは  {int(arrival_coin):,} coin")
+        st.info(f"トランスファー手数料（3%）は  {int(tran_ta):,} coin")
         st.info(f"GGドル交換は  {gg_tran_coin:,} 円")
         st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
 
