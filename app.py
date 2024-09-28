@@ -19,8 +19,8 @@ st.text("最新のドル円レートと起点通過を選択してください")
 exchange_rate = st.number_input("1ドルのレート（円）", min_value=0.01, value=RATE)
 
 # 起点通貨の選択（ラジオボタン）
-currency = st.radio("起点通貨を選択", ("ポーカーウェブコイン", "GGドル"))
-if currency == "ポーカーウェブコイン":
+currency = st.radio("起点通貨を選択", ("着金ウェブコイン", "GGドル", "保有ウェブコイン"))
+if currency == "着金ウェブコイン":
     arrival_coin = st.number_input("着金コイン", min_value=1, value=10000, step=100)
 
     # GGドル交換
@@ -35,7 +35,7 @@ if currency == "ポーカーウェブコイン":
         st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
         st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
 
-else :
+elif currency == "GGドル":
     gg_doll = st.number_input("GGドル", min_value=1, value=100, step=1)
 
     # GGドル交換コイン
@@ -49,6 +49,9 @@ else :
         st.info(f"GGドル交換コインは  {int(gg_doll_coin):,} コイン")
         st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
         st.success(f"着金コインは  {int(arrival_coin):,} コイン")
+else :
+    gg_doll = st.number_input("GGドル", min_value=1, value=100, step=1)
+
 
 # 画面の下部にTwitterリンクを追加
 st.markdown(
