@@ -5,7 +5,7 @@ from decimal import *
 # ドル円レート
 RATE = 143.00
 # トランスファー手数料（3%）
-# TAN03 = 0.03
+TAN03 = 0.03
 # 取引手数料（7%）
 TAN07 = 0.07
 TAN93 = 1 - TAN07
@@ -55,7 +55,7 @@ else :
     # 着金コイン
     arrival_coin = have_coin / 1.03
     # トランスファー手数料（3%）
-    tran_ta = arrival_coin * 0.3
+    tran_ta = arrival_coin * TAN03
     # GGドル交換
     gg_tran_coin = int(arrival_coin * TAN93)
     # 取引手数料（7%）
