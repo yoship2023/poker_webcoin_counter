@@ -50,7 +50,19 @@ elif currency == "GGドル":
         st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
         st.success(f"着金コインは  {int(arrival_coin):,} コイン")
 else :
-    gg_doll = st.number_input("GGドル", min_value=1, value=100, step=1)
+    arrival_coin = st.number_input("保有コイン", min_value=1, value=10000, step=100)
+
+    # GGドル交換
+    gg_tran_coin = int(arrival_coin * TAN93)
+    # 取引手数料（7%）
+    ta_tran = int(arrival_coin * TAN07)
+    # GGドル
+    gg_doll = gg_tran_coin / exchange_rate
+
+    if st.button("計算"):
+        st.info(f"GGドル交換は  {gg_tran_coin:,} 円")
+        st.info(f"取引手数料（{int(TAN07 * 100):} %） {ta_tran:,} 円")
+        st.success(f"GGドル {gg_doll:,.2f}  / 0.5単位切り捨て")
 
 
 # 画面の下部にTwitterリンクを追加
